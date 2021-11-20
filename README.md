@@ -29,6 +29,6 @@ Also I recommend using my arduino firmware, but feel free to use whatever you pr
 
 With the above should work just fine. For
 
-# Todo List for next Versions:
+## Todo List for next Versions:
 · Simplify the way in which the API settings are used into a single JSON File
 · Add Support for Longer Numbers than 999
