@@ -74,14 +74,14 @@ while True:
     except:
         print(f"[ERROR] Error while connecting to the server {URL}")
 
-    cnt_index = ["s1", "s2", "s3", "s4", "s5"]
+    cnt_index = ["s1", "s2", "s3", "s4", "s5"] #The indices of your data in the recieved JSON file
     for index in cnt_index:
         if int(ct[index]) < 10:
             ct[index] = f"00{ct[index]}"
         
         elif int(ct[index]) < 100:
             ct[index] = f"0{ct[index]}"
-    num = str(f'{ct["s1"]}{ct["s2"]}{ct["s3"]}{ct["s4"]}{ct["s5"]}')
+    num = str(f'{ct["s1"]}{ct["s2"]}{ct["s3"]}{ct["s4"]}{ct["s5"]}') #The String That will be sent to the arduino with the information
     try:
         value = write_read(num)
         print(value)
