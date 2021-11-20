@@ -1,3 +1,9 @@
+"""
+Author : Joel Garcia (@Newtoniano20 / Newtoniano#1173 on discord)
+This code was created for the Project Shaking Hands Overseas with the purpouse of moving a hand from the other side
+of the ocean. Any questions feel free to ask.
+"""
+
 from serial import Serial
 from time import sleep
 from requests import get
@@ -5,7 +11,7 @@ from json import loads
 from time import sleep
 
 #Code intro:
-print('SHAKING HANDS OVERSEAS RECIEVER \n Author: @Newtoniano20 (Joel Garcia) \n Github: https://github.com/Shaking-Hands-Overseas/Main \n')
+print('Arduino Serial Sender \n Author: @Newtoniano20 (Joel Garcia) \n Github: https://github.com/Shaking-Hands-Overseas/Arduino-Serial-Sender \n')
 
 # Global Variables. 
 # SERIAL PORT: Windows = COM1, COM2,... // Linux = /dev/ttyACM0, /dev/ttyACM1,...
@@ -13,7 +19,7 @@ SERIAL_PORT = ['COM1', 'COM2', 'COM3', '/dev/ttyACM0', '/dev/ttyACM1', '/dev/tty
 #ARDUINO SERIAL BAUDRATE
 BAUDRATE = 9600
 # API URL FOR RECEIVING DATA
-URL = 'https://xlbi6e.deta.dev/reciever'
+URL = ''
 
 def ask_user():
     print(f"\n[0]'COM1', [1]'COM2', [2]'COM3', \n[3]'/dev/ttyACM0', [4]'/dev/ttyACM1', [5]'/dev/ttyACM2' ")
