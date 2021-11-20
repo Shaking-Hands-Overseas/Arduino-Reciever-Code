@@ -1,7 +1,7 @@
 # Arduino-Serial-Sender
 This code is what allows the connection between the Arduino and Computer. This code gets the status from the server and sends it via terminal to an Arduino.
 
-## Important Information:
+### Important Information:
 
 This code is limited to use data up to 999, further than that will raise an error. This is a work in progress and it is to be solved.
 
