@@ -27,7 +27,7 @@ Also I recommend using my arduino firmware, but feel free to use whatever you pr
 
 6. Go to the num variable, where the string that will be sent to the arduino is created and modify it according to your data.
 
-With the above should work just fine. For
+With the above should work just fine.
 
 ## Todo List for next Versions:
 - Simplify the way in which the API settings are used into a single JSON File
