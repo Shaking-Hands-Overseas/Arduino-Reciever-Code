@@ -19,7 +19,7 @@ SERIAL_PORT = ['COM1', 'COM2', 'COM3', '/dev/ttyACM0', '/dev/ttyACM1', '/dev/tty
 #ARDUINO SERIAL BAUDRATE
 BAUDRATE = 9600
 # API URL FOR RECEIVING DATA
-URL = ''
+URL = 'https://xlbi6e.deta.dev/reciever'
 
 def ask_user():
     print(f"\n[0]'COM1', [1]'COM2', [2]'COM3', \n[3]'/dev/ttyACM0', [4]'/dev/ttyACM1', [5]'/dev/ttyACM2' ")
@@ -73,14 +73,15 @@ while True:
             ct = {"s1": 200, "s2": 200, "s3": 200, "s4": 200, "s5": 200}
     except:
         print(f"[ERROR] Error while connecting to the server {URL}")
+        ct = {"s1": 200, "s2": 200, "s3": 200, "s4": 200, "s5": 200}
 
     cnt_index = ["s1", "s2", "s3", "s4", "s5"] #The indices of your data in the recieved JSON file
     for index in cnt_index:
-        if int(ct[index]) < 10:
-            ct[index] = f"00{ct[index]}"
+        if int(ct[index]) < 10: # If the number is lower than 10
+            ct[index] = f"00{ct[index]}" #We add two zeros to the data
         
-        elif int(ct[index]) < 100:
-            ct[index] = f"0{ct[index]}"
+        elif int(ct[index]) < 100: # If the number is lower than 100
+            ct[index] = f"0{ct[index]}" # We add one zero to the data
     num = str(f'{ct["s1"]}{ct["s2"]}{ct["s3"]}{ct["s4"]}{ct["s5"]}') #The String That will be sent to the arduino with the information
     try:
         value = write_read(num)
