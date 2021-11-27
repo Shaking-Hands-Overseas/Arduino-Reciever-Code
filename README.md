@@ -8,7 +8,7 @@ This code is limited to use data up to 999, further than that will raise an erro
 ## Installation Guide:
 1. Download the lastest version from releases in this repository or clone the repository using the following command:
 ```
-git clone https://github.com/Shaking-Hands-Overseas/Arduino-Serial-Sender
+git clone https://github.com/Shaking-Hands-Overseas/Arduino-Serial-Hand
 ```
 2. Install Necessary Dependencies using pip and the included requirements file:
 ```
