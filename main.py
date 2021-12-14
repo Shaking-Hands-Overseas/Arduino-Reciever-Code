@@ -10,20 +10,22 @@ from requests import get
 from json import loads
 from time import sleep
 
-#Code intro:
+# Code intro:
 print('Arduino Serial Sender \n Author: @Newtoniano20 (Joel Garcia) \n Github: https://github.com/Shaking-Hands-Overseas/Arduino-Serial-Sender \n')
 
 # Global Variables. 
 # SERIAL PORT: Windows = COM1, COM2,... // Linux = /dev/ttyACM0, /dev/ttyACM1,...
 SERIAL_PORT = ['COM1', 'COM2', 'COM3', '/dev/ttyACM0', '/dev/ttyACM1', '/dev/ttyACM2'] 
-#ARDUINO SERIAL BAUDRATE
+# ARDUINO SERIAL BAUDRATE
 BAUDRATE = 9600
 # API URL FOR RECEIVING DATA
 URL = 'https://xlbi6e.deta.dev/reciever'
 
+
 def ask_user():
     print(f"\n[0]'COM1', [1]'COM2', [2]'COM3', \n[3]'/dev/ttyACM0', [4]'/dev/ttyACM1', [5]'/dev/ttyACM2' ")
     return input('Select a Serial Port:')
+
 
 def arduino_connect(SELECTION):
     print(f'Connecting to Serial Port {SERIAL_PORT[int(SELECTION)]}')
@@ -35,6 +37,7 @@ def arduino_connect(SELECTION):
         print(f"[ERROR] Arduino not connected to serial port {SERIAL_PORT[int(SELECTION)]}")
         raise Exception('Error while connecting to serial port specified')
 
+# redundancy
 SELECTION = ask_user()
 i = True
 while i:
@@ -43,7 +46,8 @@ while i:
         i = False
     except:
         SELECTION = ask_user()
-        
+
+
 def write_read(x):
     data1 = bytes(x, 'utf-8')
     #print(data1)
@@ -51,6 +55,7 @@ def write_read(x):
     sleep(0.05)
     data = arduino.readline()
     return data
+
 
 def getserver():
     print('Connecting to Server...')
@@ -60,14 +65,16 @@ def getserver():
         sleep(1)
     return req
 
+
 def jsonify_content(x):
     return loads(x.content.decode())
+
 
 while True:
     try:
         x = getserver()
         try:
-            ct = jsonify_content(x)
+            ct = jsonify_content(x) # Convert JSON => Dictionary Python
         except:
             print("[ERROR] Error while Jsonifying content")
             ct = {"s1": 200, "s2": 200, "s3": 200, "s4": 200, "s5": 200}
@@ -83,6 +90,7 @@ while True:
         elif int(ct[index]) < 100: # If the number is lower than 100
             ct[index] = f"0{ct[index]}" # We add one zero to the data
     num = str(f'{ct["s1"]}{ct["s2"]}{ct["s3"]}{ct["s4"]}{ct["s5"]}') #The String That will be sent to the arduino with the information
+
     try:
         value = write_read(num)
         print(value)
